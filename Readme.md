@@ -15,6 +15,8 @@ You can go to ```dist``` folder and download the ```dmg``` file.
 
 Install the dmg file on your mac and enjoy the standalone app for ChatGPT.
 
+```It only works with the Apple Silicon for now.```
+
 I hope you like it.
 
 Credit:
