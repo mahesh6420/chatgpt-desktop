@@ -1,0 +1,92 @@
+{
+    "name": "ChatGPT",
+    "productName": "ChatGPT",
+    "version": "1.0.0",
+    "description": "Desktop version of ChatGPT",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\"",
+        "build": "electron-builder"
+    },
+    "keywords": [],
+    "author": "ms",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.3.4",
+        "electron-about-window": "^1.15.2",
+        "electron-squirrel-startup": "^1.0.0",
+        "python-shell": "^5.0.0"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.5",
+        "@electron-forge/maker-deb": "^6.0.5",
+        "@electron-forge/maker-rpm": "^6.0.5",
+        "@electron-forge/maker-squirrel": "^6.0.5",
+        "@electron-forge/maker-zip": "^6.0.5",
+        "electron": "23.2.0",
+        "electron-builder": "^23.6.0"
+    },
+    "build": {
+        "appId": "chatgpt.machinelearningdev.app",
+        "productName": "ChatGPT",
+        "asarUnpack": "node_modules/sqlite3/**",
+        "mac": {
+            "category": "productivity",
+            "target": [
+                "dmg"
+            ],
+            "icon": "./src/static/icons8-chatgpt-gradient/icons8-chatgpt-512.png"
+        },
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ]
+        }
+    },
+    "config": {
+        "forge": {
+            "packagerConfig": {
+                "name": "ChatGPT",
+                "appBundleId": "chatgpt.machinelearningdev.app",
+                "appCategoryType": "public.productivity.developer-tools",
+                "icon": "icon.icns",
+                "asarUnpack": "node_modules/sqlite3/**",
+                "osxSign": {
+                    "identity": "MachineLearningDev",
+                    "entitlements": "entitlements.plist",
+                    "entitlementsInherit": "entitlements.plist"
+                }
+            },
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-dmg",
+                    "config": {
+                        "name": "ChatGPT"
+                    }
+                }
+            ],
+            "publishers": [
+                {
+                    "name": "@electron-forge/publisher-github",
+                    "config": {
+                        "repository": {
+                            "owner": "MLDev",
+                            "name": "mldev-chatgpt-repo"
+                        },
+                        "prerelease": true
+                    }
+                }
+            ]
+        }
+    }
+}
